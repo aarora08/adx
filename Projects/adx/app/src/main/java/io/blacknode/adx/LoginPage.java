@@ -37,7 +37,7 @@ public class LoginPage extends AppCompatActivity {
     private EditText _passwordText;
 
     private Button _loginButton;
-    private TextView _signupLink;
+    private Button _signupLink;
 
 
     @Override
@@ -47,11 +47,10 @@ public class LoginPage extends AppCompatActivity {
         _nameText = findViewById(R.id.input_name);
         _emailText = findViewById(R.id.input_email);
         _passwordText= findViewById(R.id.input_password);
-        _loginButton = findViewById(R.id.btn_signup);
-        _signupLink = findViewById(R.id.link_login);
+        _loginButton = findViewById(R.id.btn_login);
+        _signupLink = findViewById(R.id.link_signup);
 
 
-        FirebaseApp.initializeApp(this.getBaseContext());
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -68,14 +67,13 @@ public class LoginPage extends AppCompatActivity {
             }
         };
 
-
         _loginButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 login();
             }
         });
+
 
         _signupLink.setOnClickListener(new View.OnClickListener() {
 
@@ -181,8 +179,8 @@ public class LoginPage extends AppCompatActivity {
             _emailText.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("between 4 and 10 alphanumeric characters");
+        if (password.isEmpty() || password.length() < 4 || password.length() > 20) {
+            _passwordText.setError("between 4 and 20 alphanumeric characters");
             valid = false;
         } else {
             _passwordText.setError(null);

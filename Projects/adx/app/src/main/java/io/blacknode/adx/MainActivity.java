@@ -110,17 +110,28 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(MainActivity.this,"Log In!",Toast.LENGTH_SHORT).show();
 
-                    // User is signed in
-                    Intent i = new Intent(MainActivity.this, LoginPage.class);
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(i);
+
                 }
                 // ...
             }
         };
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Toast.makeText(this,"View Created Log In!",Toast.LENGTH_SHORT).show();
+
+            // User is signed in
+//            setFragment(userFragment);
+        }
+        else{
+            Toast.makeText(this,"VC Logged In!",Toast.LENGTH_SHORT).show();
+//            mLogin =  findViewById(R.id.login);
+//            mLogin.setText(R.string.logout);
+        }
 
 
-}
+
+
+    }
 
 
     private void setFragment(Fragment fragment) {
@@ -129,16 +140,5 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
 }
-    @Override
-    public void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
-    }
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
-    }
+
 }

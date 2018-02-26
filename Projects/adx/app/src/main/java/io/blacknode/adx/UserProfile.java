@@ -1,6 +1,7 @@
 package io.blacknode.adx;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,17 +47,36 @@ public class UserProfile extends  Fragment {
      */
     private ViewPager mViewPager;
     private Button mLogin;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private final String TAG = "authlogin";
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
+//        FirebaseApp.initializeApp(getContext());
+//        mAuth = FirebaseAuth.getInstance();
+//        mAuthListener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                FirebaseUser user = firebaseAuth.getCurrentUser();
+//                if (user != null) {
+//                    // User is signed in
+//                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+//                } else {
+//                    Toast.makeText(getContext(),"Log In!",Toast.LENGTH_SHORT).show();
+//
+//
+//                }
+//                // ...
+//            }
+//        };
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.activity_user_profile, container, false);
+//    }
     }
-
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {

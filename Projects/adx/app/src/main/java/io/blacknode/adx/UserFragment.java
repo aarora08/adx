@@ -24,10 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
  */
 public class UserFragment extends Fragment {
 
-    private Button mLogin;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private static final String TAG = "LoginActivity";
+
 
 
     public UserFragment() {
@@ -46,35 +43,5 @@ private View view;
     }
 
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
-            Toast.makeText(getActivity(),"View Created Log In!",Toast.LENGTH_SHORT).show();
 
-            // User is signed in
-            Intent i = new Intent(getActivity(), LoginPage.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            getActivity().startActivity(i);
-        }
-        else{
-            Toast.makeText(getActivity(),"VC Logged In!",Toast.LENGTH_SHORT).show();
-            mLogin =  getView().findViewById(R.id.login);
-            mLogin.setText(R.string.logout);
-        }
-
-    }
-    @Override
-    public void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
-    }
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
-    }
 }

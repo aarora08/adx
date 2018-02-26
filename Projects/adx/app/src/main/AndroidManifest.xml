@@ -25,7 +25,19 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".UserFragment"
+            android:label="@string/title_activity_user_profile"
+            ></activity>
+        <activity
             android:name=".UserProfile"
+            android:label="@string/title_activity_user_profile"
+            ></activity>
+        <activity
+            android:name=".LoginPage"
+            android:label="@string/title_activity_user_profile"
+            ></activity>
+        <activity
+            android:name=".SignUpActivity"
             android:label="@string/title_activity_user_profile"
             ></activity>
 

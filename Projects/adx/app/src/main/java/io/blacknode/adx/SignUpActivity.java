@@ -36,7 +36,6 @@ public class SignUpActivity extends AppCompatActivity {
     private TextView _loginLink;
 
 
-
     //    @BindView(R.id.input_name) EditText _nameText;
 //    @BindView(R.id.input_email) EditText _emailText;
 //    @BindView(R.id.input_password) EditText _passwordText;
@@ -49,7 +48,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         _nameText = findViewById(R.id.input_name);
         _emailText = findViewById(R.id.input_email);
-        _passwordText= findViewById(R.id.input_password);
+        _passwordText = findViewById(R.id.input_password);
         _signupButton = findViewById(R.id.btn_signup);
         _loginLink = findViewById(R.id.link_login);
 
@@ -98,32 +97,41 @@ public class SignUpActivity extends AppCompatActivity {
 
         final ProgressDialog progressDialog = new ProgressDialog(SignUpActivity.this,
                 R.style.AppTheme);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creating Account...");
-        progressDialog.show();
+        new Thread() {
+            @Override
+            public void run() {
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Creating Account...");
+                progressDialog.show();
+            }
+        }.start();
 
         String name = _nameText.getText().toString();
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
+        signup();
 
-        // TODO: Implement your own signup logic here.
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(SignUpActivity.this, R.string.auth_failed,
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            onSignupSuccess();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+
                         }
 
-                        // ...
                     }
                 });
+
+
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
@@ -179,5 +187,17 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
     }
 }

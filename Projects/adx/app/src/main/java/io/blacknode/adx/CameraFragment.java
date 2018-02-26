@@ -81,13 +81,15 @@ public class CameraFragment extends Fragment implements
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        setupListeners();
-        setupLayout();
-        setAugmentedRealityPoint();
+
+                setupListeners();
+                setupLayout();
+                setAugmentedRealityPoint();
+
+            }
 
 
 
-    }
 
 
 
@@ -175,7 +177,7 @@ public class CameraFragment extends Fragment implements
         mAzimuthReal = azimuthChangedTo;
         mAzimuthTeoretical = calculateTeoreticalAzimuth();
 
-        pointerIcon = (ImageView) getView().findViewById(R.id.icon);
+        pointerIcon =  getView().findViewById(R.id.icon);
 
         double minAngle = calculateAzimuthAccuracy(mAzimuthTeoretical).get(0);
         double maxAngle = calculateAzimuthAccuracy(mAzimuthTeoretical).get(1);
