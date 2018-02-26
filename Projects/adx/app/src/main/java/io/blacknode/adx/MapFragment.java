@@ -54,7 +54,7 @@ public class MapFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Mapbox.getInstance(this.getActivity(), getString(R.string.access_token));
+        Mapbox.getInstance(getContext(), getString(R.string.access_token));
         locationEngine = new LocationSource(getContext());
         locationEngine.activate();
         mapView = getView().findViewById(R.id.mapview);
