@@ -23,8 +23,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import butterknife.ButterKnife;
-import butterknife.BindView;
+
 
 public class LoginPage extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
@@ -33,15 +32,25 @@ public class LoginPage extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    @BindView(R.id.input_email) EditText _emailText;
-    @BindView(R.id.input_password) EditText _passwordText;
-    @BindView(R.id.btn_login) Button _loginButton;
-    @BindView(R.id.link_signup) TextView _signupLink;
+    private EditText _nameText;
+    private EditText _emailText;
+    private EditText _passwordText;
+
+    private Button _loginButton;
+    private TextView _signupLink;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        _nameText = findViewById(R.id.input_name);
+        _emailText = findViewById(R.id.input_email);
+        _passwordText= findViewById(R.id.input_password);
+        _loginButton = findViewById(R.id.btn_signup);
+        _signupLink = findViewById(R.id.link_login);
+
+
         FirebaseApp.initializeApp(this.getBaseContext());
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -59,7 +68,6 @@ public class LoginPage extends AppCompatActivity {
             }
         };
 
-        ButterKnife.bind(this);
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 

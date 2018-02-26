@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 27
@@ -9,6 +8,8 @@ android {
         minSdkVersion 20
         targetSdkVersion 27
         versionCode 1
+        multiDexEnabled true
+
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -34,7 +35,9 @@ dependencies {
     compile 'com.google.android.gms:play-services-location:11.8.0'
     compile 'com.mapbox.mapboxsdk:mapbox-android-sdk:5.4.1'
     compile 'com.mapzen.android:lost:3.0.2'
-    compile 'com.jakewharton:butterknife:8.8.1'
+    compile 'com.jakewharton:butterknife-gradle-plugin:8.8.1'
+
+
     compile 'com.android.support:support-v4:27.+'
     compile 'com.google.firebase:firebase-auth:11.8.0'
     compile 'com.google.android.gms:play-services-auth:11.8.0'

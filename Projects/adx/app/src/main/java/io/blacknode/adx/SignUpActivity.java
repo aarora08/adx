@@ -21,25 +21,39 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import butterknife.ButterKnife;
-import butterknife.BindView;
+import org.w3c.dom.Text;
+
 
 public class SignUpActivity extends AppCompatActivity {
     private static final String TAG = "SignupActivity";
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private EditText _nameText;
+    private EditText _emailText;
+    private EditText _passwordText;
 
-    @BindView(R.id.input_name) EditText _nameText;
-    @BindView(R.id.input_email) EditText _emailText;
-    @BindView(R.id.input_password) EditText _passwordText;
-    @BindView(R.id.btn_signup) Button _signupButton;
-    @BindView(R.id.link_login) TextView _loginLink;
+    private Button _signupButton;
+    private TextView _loginLink;
+
+
+
+    //    @BindView(R.id.input_name) EditText _nameText;
+//    @BindView(R.id.input_email) EditText _emailText;
+//    @BindView(R.id.input_password) EditText _passwordText;
+//    @BindView(R.id.btn_signup) Button _signupButton;
+//    @BindView(R.id.link_login) TextView _loginLink;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        ButterKnife.bind(this);
+        _nameText = findViewById(R.id.input_name);
+        _emailText = findViewById(R.id.input_email);
+        _passwordText= findViewById(R.id.input_password);
+        _signupButton = findViewById(R.id.btn_signup);
+        _loginLink = findViewById(R.id.link_login);
+
+
         FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {

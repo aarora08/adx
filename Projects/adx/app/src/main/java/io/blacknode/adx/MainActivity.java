@@ -118,20 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 // ...
             }
         };
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
-            Toast.makeText(this,"Log In!",Toast.LENGTH_SHORT).show();
 
-            // User is signed in
-            Intent i = new Intent(this, LoginPage.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(i);
-        }
-        else{
-            Toast.makeText(this,"Logged In!",Toast.LENGTH_SHORT).show();
-            mLogin =  findViewById(R.id.login);
-            mLogin.setText(R.string.logout);
-        }
 
 }
 
