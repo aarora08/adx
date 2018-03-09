@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
 
     <item
-        android:id="@+id/nav_camera"
-        android:icon="@drawable/ic_camera_alt_white_24dp"
-        android:title="@string/nav_camera" />
-    <item
         android:id="@+id/nav_map"
-        android:icon="@drawable/ic_near_me_white_24dp"
+        android:background="@drawable/gradient"
+        android:icon="@drawable/ic_pin_drop_white_24dp"
         android:title="@string/nav_map" />
+    <item
+        android:id="@+id/nav_camera"
+        android:icon="@drawable/ic_camera_enhance_white_24dp"
+        android:title="@string/nav_camera"
+        android:background="@drawable/gradient" />
+
     <item
         android:id="@+id/nav_user"
         android:icon="@drawable/ic_account_circle_white_24dp"
-        android:title="@string/nav_user" />
+        android:title="@string/nav_user"
+        android:background="@drawable/gradient"
+        />
 </menu>

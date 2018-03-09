@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:theme="@style/Theme.AppCompat.NoActionBar">
 
     <android.support.design.widget.BottomNavigationView
-        app:menu="@menu/nav_items"
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        app:itemBackground="@color/colorPrimary"
-        app:itemIconTint="@color/nav_item_colors"
-        android:id="@+id/bottomNavigationView"></android.support.design.widget.BottomNavigationView>
+        android:layout_alignParentStart="true"
+        app:menu="@menu/nav_items" />
 
     <FrameLayout
         android:id="@+id/main_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigationView"
         android:layout_alignParentStart="true"
-        android:layout_above="@id/bottomNavigationView">
+        android:background="@color/colorBlack"
+        android:itemBackground="@null"
+
+        android:theme="@style/Theme.AppCompat.NoActionBar">
 
     </FrameLayout>
 </RelativeLayout>
