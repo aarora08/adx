@@ -63,7 +63,7 @@ public class UserTabFragment extends Fragment {
                     // User is signed in
                     Intent i = new Intent(getActivity(), LoginPage.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    getActivity().startActivity(i);
+
                 } else {
                     mLogin = getView().findViewById(R.id.login);
                     mLogin.setText(R.string.logout);

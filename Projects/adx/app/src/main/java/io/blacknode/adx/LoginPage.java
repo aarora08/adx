@@ -63,7 +63,7 @@ public class LoginPage extends AppCompatActivity {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                // ...
+
             }
         };
 
@@ -140,11 +140,14 @@ public class LoginPage extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_SIGNUP) {
-            if (resultCode == RESULT_OK) {
+            if (resultCode == RESULT_OK && getFragmentManager().getBackStackEntryCount() == 0) {
 
                 // TODO: Implement successful signup logic here
                 // By default we just finish the Activity and log them in automatically
                 this.finish();
+            }
+            else if (resultCode == RESULT_OK && getFragmentManager().getBackStackEntryCount() != 0){
+                getFragmentManager().popBackStack();
             }
         }
     }
@@ -157,7 +160,7 @@ public class LoginPage extends AppCompatActivity {
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
-        finish();
+        getFragmentManager().popBackStack();
     }
 
     public void onLoginFailed() {

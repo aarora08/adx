@@ -34,9 +34,10 @@ dependencies {
     compile 'com.mapbox.mapboxsdk:mapbox-android-sdk:5.4.1'
     compile 'com.mapzen.android:lost:3.0.2'
     compile 'com.jakewharton:butterknife:8.8.1'
-    compile 'com.android.support:support-v4:27.+'
+    compile 'com.android.support:support-v4:27.1.0'
     compile 'com.google.firebase:firebase-auth:11.8.0'
     compile 'com.google.android.gms:play-services-auth:11.8.0'
+    implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
     testCompile 'junit:junit:4.12'
 }
 apply plugin: 'com.google.gms.google-services'
